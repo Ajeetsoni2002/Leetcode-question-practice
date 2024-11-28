@@ -21,6 +21,7 @@ class Solution {
       }
       ans.push_back(dist[n - 1]);
     }
+
     return ans;
   }
 
