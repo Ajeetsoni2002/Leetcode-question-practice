@@ -16,5 +16,4 @@ public:
             }
         }
         return odd <= k;
-    }
-};
+
