@@ -1,13 +1,19 @@
 class Solution {
- public:
-  // Similar to 859. Buddy Strings
-  bool areAlmostEqual(string s1, string s2) {
-    vector<int> diffIndices;
-    for (int i = 0; i < s1.length(); ++i)
-      if (s1[i] != s2[i])
-        diffIndices.push_back(i);
-    return diffIndices.empty() || (diffIndices.size() == 2 &&
-                                   s1[diffIndices[0]] == s2[diffIndices[1]] &&
-                                   s1[diffIndices[1]] == s2[diffIndices[0]]);
-  }
+    int nC2(int n){
+        return (n*(n-1))/2;
+    }
+public:
+    int tupleSameProduct(vector<int>& nums) {
+        int n=nums.size();
+        unordered_map<int,int> freq;//K->product...V->frequency of such pair
+        for(int i=0;i<n-1;++i)
+            for(int j=i+1;j<n;++j)
+                freq[nums[i]*nums[j]]++;
+        
+        int count=0;
+        for(auto [product,frequency]: freq)
+            count += 8 * nC2(frequency);
+        
+        return count;
+    }
 };
